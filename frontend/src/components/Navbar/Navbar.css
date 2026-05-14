@@ -1,0 +1,143 @@
+/* ============================================================
+   FILE: src/components/Navbar/Navbar.css
+   ============================================================ */
+
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  height: var(--nav-height);
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-gray-5);
+  /* Hiệu ứng mờ khi cuộn xuống */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(247, 245, 242, 0.92);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* --- LOGO --- */
+.navbar__logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-black);
+  text-transform: uppercase;
+}
+.navbar__logo span {
+  color: var(--color-accent);
+}
+
+/* --- NAV LINKS (giữa) --- */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.navbar__link {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gray-3);
+  transition: color var(--transition);
+  position: relative;
+}
+.navbar__link:hover,
+.navbar__link.active {
+  color: var(--color-black);
+}
+/* Gạch dưới khi active */
+.navbar__link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0; right: 0;
+  height: 1px;
+  background: var(--color-black);
+}
+
+/* --- ACTIONS (phải) --- */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Nút giỏ hàng */
+.navbar__cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-black);
+  transition: opacity var(--transition);
+}
+.navbar__cart:hover { opacity: 0.6; }
+
+/* Badge số lượng trên icon giỏ hàng */
+.cart-badge {
+  position: absolute;
+  top: -8px; right: -10px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  background: var(--color-black);
+  color: var(--color-white);
+  font-size: 10px;
+  font-weight: 500;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Tên user đang đăng nhập */
+.navbar__user {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--color-gray-3);
+}
+.navbar__user strong {
+  color: var(--color-black);
+}
+
+/* Nút đăng xuất */
+.navbar__logout {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gray-3);
+  transition: color var(--transition);
+  padding: 0;
+}
+.navbar__logout:hover { color: var(--color-danger); }
+
+/* Divider dọc */
+.navbar__divider {
+  width: 1px;
+  height: 16px;
+  background: var(--color-gray-5);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .navbar__links { display: none; }
+  .navbar__logo { font-size: 18px; }
+}

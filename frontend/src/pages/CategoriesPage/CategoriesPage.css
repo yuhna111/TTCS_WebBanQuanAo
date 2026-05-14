@@ -1,0 +1,166 @@
+/* ============================================================
+   FILE: src/pages/CategoriesPage/CategoriesPage.css
+   ============================================================ */
+
+.categories-page {
+  padding: 80px 0;
+  min-height: 100vh;
+  background: var(--color-white);
+}
+
+/* ---- HEADER ---- */
+.categories-page__header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.categories-page__title {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+  color: var(--color-black);
+}
+
+.categories-page__subtitle {
+  font-size: 14px;
+  color: var(--color-gray-3);
+  letter-spacing: 0.05em;
+}
+
+/* ---- CATEGORIES GRID ---- */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+/* ---- CATEGORY CARD ---- */
+.category-card {
+  position: relative;
+  cursor: pointer;
+  border-radius: var(--radius);
+  overflow: hidden;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform var(--transition);
+  background: var(--color-gray-5);
+}
+
+.category-card:hover {
+  transform: translateY(-12px);
+}
+
+/* Background gradient cho từng category */
+.category-card__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  transition: opacity var(--transition);
+}
+
+/* Color scheme cho từng danh mục */
+.category-bg-1 { background: linear-gradient(135deg, #6b5b4a 0%, #8b7355 100%); } /* Tops - Brown */
+.category-bg-2 { background: linear-gradient(135deg, #4a5b6b 0%, #556b8b 100%); } /* Bottoms - Blue */
+.category-bg-3 { background: linear-gradient(135deg, #5b4a6b 0%, #7b55ab 100%); } /* Outerwear - Purple */
+.category-bg-4 { background: linear-gradient(135deg, #4a6b5b 0%, #55ab7b 100%); } /* Sweatshirts - Green */
+.category-bg-5 { background: linear-gradient(135deg, #6b5a4a 0%, #9b7a5a 100%); } /* Accessories - Tan */
+
+.category-card:hover .category-card__background {
+  opacity: 0.8;
+}
+
+/* Content của card */
+.category-card__content {
+  position: relative;
+  z-index: 1;
+  color: var(--color-white);
+  transition: transform var(--transition);
+}
+
+.category-card:hover .category-card__content {
+  transform: scale(1.05);
+}
+
+.category-card__name {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+  color: var(--color-white);
+}
+
+.category-card__description {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  max-width: 200px;
+  letter-spacing: 0.02em;
+}
+
+/* CTA button trên card */
+.category-card__cta {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.category-card:hover .category-card__cta {
+  opacity: 1;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .categories-page {
+    padding: 60px 0;
+  }
+
+  .categories-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .category-card {
+    min-height: 300px;
+  }
+
+  .category-card__icon {
+    font-size: 48px;
+  }
+
+  .category-card__name {
+    font-size: 18px;
+  }
+
+  .category-card__description {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-card {
+    min-height: 250px;
+  }
+}

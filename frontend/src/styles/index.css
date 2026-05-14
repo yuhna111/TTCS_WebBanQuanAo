@@ -1,0 +1,189 @@
+/* ============================================================
+   FILE: src/styles/index.css
+   Global reset, CSS variables, typography — phong cách tối giản
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&display=swap');
+
+/* -------------------------------------------------------
+   CSS VARIABLES — thay đổi ở đây để đổi toàn bộ theme
+   ------------------------------------------------------- */
+:root {
+  --color-black:   #0a0a0a;
+  --color-white:   #f7f5f2;
+  --color-gray-1:  #1a1a1a;
+  --color-gray-2:  #2e2e2e;
+  --color-gray-3:  #6b6b6b;
+  --color-gray-4:  #b0aca6;
+  --color-gray-5:  #e8e5e0;
+  --color-accent:  #c8a96e;   /* vàng đất — điểm nhấn duy nhất */
+  --color-danger:  #c0392b;
+  --color-success: #27ae60;
+
+  --font-display: 'Montserrat', sans-serif;
+  --font-body:    'Montserrat', sans-serif;
+
+  --nav-height:   64px;
+  --max-width:    1200px;
+  --radius:       2px;
+
+  --transition:   0.2s ease;
+  --shadow:       0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* -------------------------------------------------------
+   RESET
+   ------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background: var(--color-white);
+  color: var(--color-black);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+img { display: block; max-width: 100%; }
+input, textarea, select { font-family: inherit; }
+ul, ol { list-style: none; }
+
+/* -------------------------------------------------------
+   TYPOGRAPHY UTILITIES
+   ------------------------------------------------------- */
+.display { font-family: var(--font-display); }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+/* -------------------------------------------------------
+   LAYOUT UTILITIES
+   ------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* -------------------------------------------------------
+   GLOBAL BUTTON STYLES
+   ------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--color-black);
+  color: var(--color-white);
+  border: 1px solid var(--color-black);
+}
+.btn-primary:hover { background: var(--color-gray-1); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-black);
+  border: 1px solid var(--color-black);
+}
+.btn-outline:hover { background: var(--color-black); color: var(--color-white); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-gray-3);
+  border: 1px solid var(--color-gray-5);
+  font-size: 11px;
+}
+.btn-ghost:hover { border-color: var(--color-black); color: var(--color-black); }
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* -------------------------------------------------------
+   GLOBAL FORM STYLES
+   ------------------------------------------------------- */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gray-3);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 11px 14px;
+  background: transparent;
+  border: 1px solid var(--color-gray-5);
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--color-black);
+  transition: border-color var(--transition);
+  outline: none;
+}
+.form-group input:focus { border-color: var(--color-black); }
+.form-group input::placeholder { color: var(--color-gray-4); }
+
+/* -------------------------------------------------------
+   ERROR & SUCCESS MESSAGES
+   ------------------------------------------------------- */
+.msg-error {
+  font-size: 12px;
+  color: var(--color-danger);
+  padding: 10px 14px;
+  border: 1px solid rgba(192,57,43,0.3);
+  border-radius: var(--radius);
+  background: rgba(192,57,43,0.04);
+}
+
+.msg-success {
+  font-size: 12px;
+  color: var(--color-success);
+  padding: 10px 14px;
+  border: 1px solid rgba(39,174,96,0.3);
+  border-radius: var(--radius);
+  background: rgba(39,174,96,0.04);
+}
+
+/* -------------------------------------------------------
+   PAGE WRAPPER (để không bị navbar che)
+   ------------------------------------------------------- */
+.page-wrapper {
+  padding-top: var(--nav-height);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;
+}

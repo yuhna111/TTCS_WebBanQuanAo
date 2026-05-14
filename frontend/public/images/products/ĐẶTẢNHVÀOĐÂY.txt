@@ -1,0 +1,22 @@
+Đặt ảnh sản phẩm vào đây (600x800px, ratio 3:4)
+Tên file theo mockData.js:
+- hoodie-washed-grey.jpg
+- hoodie-distressed-black.jpg
+- hoodie-patchwork.jpg
+- hoodie-acid-wash.jpg
+- zipup-fleece-bone.jpg
+- zipup-tactical-olive.jpg
+- zipup-denim-trucker.jpg
+- zipup-varsity-black.jpg
+- tshirt-boxy-graphic-white.jpg
+- tshirt-distressed-black.jpg
+- tshirt-longline-grey.jpg
+- tshirt-cutoff-white.jpg
+- tshirt-longsleeve-rust.jpg
+- denim-carpenter-lightwash.jpg
+- denim-widejean-ripped.jpg
+- denim-cargo-indigo.jpg
+- acc-bucket-hat-black.jpg
+- acc-beanie-grey.jpg
+- acc-tote-canvas.jpg
+- acc-socks-3pack.jpg
