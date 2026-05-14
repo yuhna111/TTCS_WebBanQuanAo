@@ -52,7 +52,7 @@ export default function CategoriesPage() {
   return (
     <div className="categories-page">
       <div className="container">
-        
+
         {/* ---- HEADER ---- */}
         <div className="categories-page__header">
           <h1 className="categories-page__title">Danh mục sản phẩm</h1>
@@ -70,7 +70,12 @@ export default function CategoriesPage() {
               onClick={() => navigate(`/products?category=${category.category_id}`)}
             >
               {/* Background color based on category */}
-              <div className={`category-card__background category-bg-${category.category_id}`}></div>
+              <div
+                className={`category-card__background ${category.category_name?.trim().toLowerCase() === "tops"
+                    ? "category-bg-tops"
+                    : `category-bg-${category.category_id}`
+                  }`}
+              />
 
               {/* Content */}
               <div className="category-card__content">

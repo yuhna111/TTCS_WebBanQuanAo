@@ -124,6 +124,14 @@ export const getAllVouchers = (token) =>
 export const createVoucher = (voucherData, token) =>
   request("/vouchers", "POST", voucherData, token);
 
+// Cập nhật voucher (Admin)
+export const updateVoucher = (voucherId, voucherData, token) =>
+  request(`/vouchers/${voucherId}`, "PUT", voucherData, token);
+
+// Xóa voucher (Admin)
+export const deleteVoucher = (voucherId, token) =>
+  request(`/vouchers/${voucherId}`, "DELETE", null, token);
+
 // ============================================================
 // NHÓM API 5: ĐƠN HÀNG
 // Endpoint: POST /api/orders, GET /api/orders/history/:userId, PUT /api/orders/:id/status

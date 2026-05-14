@@ -68,11 +68,31 @@
 }
 
 /* Color scheme cho từng danh mục */
-.category-bg-1 { background: linear-gradient(135deg, #6b5b4a 0%, #8b7355 100%); } /* Tops - Brown */
-.category-bg-2 { background: linear-gradient(135deg, #4a5b6b 0%, #556b8b 100%); } /* Bottoms - Blue */
-.category-bg-3 { background: linear-gradient(135deg, #5b4a6b 0%, #7b55ab 100%); } /* Outerwear - Purple */
-.category-bg-4 { background: linear-gradient(135deg, #4a6b5b 0%, #55ab7b 100%); } /* Sweatshirts - Green */
-.category-bg-5 { background: linear-gradient(135deg, #6b5a4a 0%, #9b7a5a 100%); } /* Accessories - Tan */
+.category-bg-1 {
+  background: linear-gradient(135deg, #6b5b4a 0%, #8b7355 100%);
+}
+
+/* Tops - Brown */
+.category-bg-2 {
+  background: linear-gradient(135deg, #4a5b6b 0%, #556b8b 100%);
+}
+
+/* Bottoms - Blue */
+.category-bg-3 {
+  background: linear-gradient(135deg, #5b4a6b 0%, #7b55ab 100%);
+}
+
+/* Outerwear - Purple */
+.category-bg-4 {
+  background: linear-gradient(135deg, #4a6b5b 0%, #55ab7b 100%);
+}
+
+/* Sweatshirts - Green */
+.category-bg-5 {
+  background: linear-gradient(135deg, #6b5a4a 0%, #9b7a5a 100%);
+}
+
+/* Accessories - Tan */
 
 .category-card:hover .category-card__background {
   opacity: 0.8;
@@ -163,4 +183,8 @@
   .category-card {
     min-height: 250px;
   }
+}
+
+.category-bg-tops {
+  background: linear-gradient(135deg, #000000 0%, #222222 100%) !important;
 }

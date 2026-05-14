@@ -67,10 +67,13 @@ export default function HomePage() {
         {/* Bên phải: Background (để thay ảnh) */}
         <div className="hero-section__right">
           <div className="hero-section__background">
-            <img 
-              src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=1200&h=600&fit=crop&q=80" 
+            <img
+              src="/images/hero/home-hero.jpg"
               alt="AvQ Streetwear Hero"
               className="hero-section__image"
+              onError={(e) => {
+                e.target.src = "https://placehold.co/1200x600/e8e5e0/6b6b6b?text=AvQ";
+              }}
             />
           </div>
         </div>
@@ -163,9 +166,9 @@ export default function HomePage() {
           <div className="about-section__content">
             <h2 className="about-section__title">Về AvQ</h2>
             <p className="about-section__text">
-              AvQ là thương hiệu streetwear độc lập Việt Nam, 
-              chuyên sản xuất các mẫu áo, quần và phụ kiện với thiết kế độc đáo, 
-              chất lượng cao và bền vững. Chúng tôi không bao giờ theo trend, 
+              AvQ là thương hiệu streetwear độc lập Việt Nam,
+              chuyên sản xuất các mẫu áo, quần và phụ kiện với thiết kế độc đáo,
+              chất lượng cao và bền vững. Chúng tôi không bao giờ theo trend,
               mà luôn tự tạo ra trend của riêng mình.
             </p>
           </div>
