@@ -115,6 +115,15 @@ export default function ProductDetailPage() {
   // Helper: render sao đánh giá
   const renderStars = (rating) => "★".repeat(rating) + "☆".repeat(5 - rating);
 
+  // Helper: convert image URL
+  const getImageUrl = (imageUrl) => {
+    if (!imageUrl) return "https://placehold.co/600x800/e8e5e0/6b6b6b?text=AvQ";
+    if (imageUrl.startsWith('http')) return imageUrl;
+    const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+    const baseUrl = apiUrl.replace('/api', '');
+    return baseUrl + imageUrl;
+  };
+
   return (
     <div className="detail-page">
       <div className="container">
@@ -127,7 +136,7 @@ export default function ProductDetailPage() {
           <div className="detail-page__image-col">
             <div className="detail-page__image-wrap">
               <img
-                src={product.image_url}
+                src={getImageUrl(product.image_url)}
                 alt={product.product_name}
                 className="detail-page__image"
                 onError={(e) => {

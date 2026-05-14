@@ -13,8 +13,8 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import { useAuth } from "../../context/AuthContext";
 
-import { getProducts } from "../../services/api";
-import { CATEGORIES, SIZES, formatPrice } from "../../data/mockData";
+import { getProducts, getCategories } from "../../services/api";
+import { SIZES, formatPrice } from "../../data/mockData";
 import "./ProductsPage.css";
 
 export default function ProductsPage() {
@@ -26,6 +26,7 @@ export default function ProductsPage() {
   // --- STATE BỘ LỌC ---
   // null = chưa lọc (hiện tất cả)
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -39,13 +40,17 @@ export default function ProductsPage() {
   const [selectedSize, setSelectedSize] = useState(null);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchData = async () => {
       setLoading(true);
       setError(null);
 
       try {
-        const response = await getProducts(); // gọi API backend
-        setProducts(response.data || []); // backend trả về { data: [...] }
+        const [productsRes, categoriesRes] = await Promise.all([
+          getProducts(),
+          getCategories()
+        ]);
+        setProducts(productsRes.data || []);
+        setCategories(categoriesRes.data || []);
       } catch (err) {
         setError(err.message || "Không lấy được sản phẩm");
       } finally {
@@ -53,7 +58,7 @@ export default function ProductsPage() {
       }
     };
 
-    fetchProducts();
+    fetchData();
   }, []);
 
   // --- LỌC SẢN PHẨM ---
@@ -143,7 +148,7 @@ export default function ProductsPage() {
                 >
                   Tất cả
                 </button>
-                {CATEGORIES.map((cat) => (
+                {categories.map((cat) => (
                   <button
                     key={cat.category_id}
                     className={
@@ -214,12 +219,22 @@ export default function ProductsPage() {
   );
 }
 
+// Hàm helper để convert image URL
+function getImageUrl(imageUrl) {
+  if (!imageUrl) return "https://placehold.co/400x533/e8e5e0/6b6b6b?text=AvQ";
+  if (imageUrl.startsWith('http')) return imageUrl; // đã là full URL
+  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+  const baseUrl = apiUrl.replace('/api', ''); // lấy base URL (loại bỏ /api)
+  return baseUrl + imageUrl; // http://localhost:5000 + /uploads/file.jpg
+}
+
 // ============================================================
 // COMPONENT CON: ProductCard
 // Tách ra thành component riêng cho gọn và dễ tái sử dụng
 // ============================================================
 function ProductCard({ product, onQuickAdd, onClick }) {
   const isOutOfStock = product.stock_quantity === 0;
+  const imageUrl = getImageUrl(product.image_url);
 
   return (
     <article className="product-card" onClick={onClick} role="button" tabIndex={0}>
@@ -227,7 +242,7 @@ function ProductCard({ product, onQuickAdd, onClick }) {
       {/* ---- ẢNH SẢN PHẨM ---- */}
       <div className="product-card__image-wrap">
         <img
-          src={product.image_url}
+          src={imageUrl}
           alt={product.product_name}
           className="product-card__image"
           loading="lazy" // lazy load để trang tải nhanh hơn

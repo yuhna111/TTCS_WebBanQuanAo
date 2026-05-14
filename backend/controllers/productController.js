@@ -2,7 +2,11 @@ const pool = require('../config/db');
 
 exports.getAllProducts = async (req, res) => {
     try {
-        const [rows] = await pool.query('SELECT * FROM Product'); 
+        const [rows] = await pool.query(`
+            SELECT p.*, c.category_name 
+            FROM Product p 
+            LEFT JOIN Category c ON p.category_id = c.category_id
+        `); 
         res.status(200).json({
             success: true,
             data: rows
@@ -16,7 +20,12 @@ exports.getAllProducts = async (req, res) => {
 exports.getProductById = async (req, res) => {
     const productId = req.params.id;
     try {
-        const [rows] = await pool.query('SELECT * FROM Product WHERE product_id = ?', [productId]);
+        const [rows] = await pool.query(`
+            SELECT p.*, c.category_name 
+            FROM Product p 
+            LEFT JOIN Category c ON p.category_id = c.category_id 
+            WHERE p.product_id = ?
+        `, [productId]);
         if (rows.length === 0) {
             return res.status(404).json({ success: false, message: 'Không tìm thấy sản phẩm' });
         }
@@ -80,7 +89,12 @@ exports.createProduct = async (req, res) => {
 
 exports.getAdminProducts = async (req, res) => {
     try {
-        const [rows] = await pool.query('SELECT * FROM Product ORDER BY product_id DESC');
+        const [rows] = await pool.query(`
+            SELECT p.*, c.category_name 
+            FROM Product p 
+            LEFT JOIN Category c ON p.category_id = c.category_id 
+            ORDER BY p.product_id DESC
+        `);
         res.status(200).json({
             success: true,
             products: rows

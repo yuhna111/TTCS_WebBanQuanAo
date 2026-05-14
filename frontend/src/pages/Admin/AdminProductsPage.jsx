@@ -9,6 +9,16 @@ import { getAdminProducts, createProduct, updateProduct, deleteProduct, getCateg
 import { formatPrice } from "../../data/adminMockData";
 import { useAuth } from "../../context/AuthContext";
 
+// Helper: convert image URL
+function getImageUrl(imageUrl) {
+  if (!imageUrl) return null;
+  if (imageUrl.startsWith('data:')) return imageUrl; // DataURL từ FileReader
+  if (imageUrl.startsWith('http')) return imageUrl; // đã là full URL
+  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+  const baseUrl = apiUrl.replace('/api', '');
+  return baseUrl + imageUrl;
+}
+
 export default function AdminProductsPage() {
   const { token } = useAuth();
 
@@ -293,9 +303,12 @@ export default function AdminProductsPage() {
                 {imagePreview && (
                   <div style={{ marginBottom: "8px", textAlign: "center" }}>
                     <img
-                      src={imagePreview}
+                      src={getImageUrl(imagePreview)}
                       alt="Preview"
                       style={{ maxWidth: "100%", maxHeight: "150px", borderRadius: "4px" }}
+                      onError={(e) => {
+                        e.target.src = "https://placehold.co/400x300/e8e5e0/6b6b6b?text=Error";
+                      }}
                     />
                   </div>
                 )}
@@ -381,7 +394,7 @@ export default function AdminProductsPage() {
                         {product.stock_quantity}
                       </span>
                     </td>
-                    <td>{product.category_id || "-"}</td>
+                    <td>{product.category_name || "-"}</td>
                     <td>
                       <div style={{ display: "flex", gap: "6px" }}>
                         <button

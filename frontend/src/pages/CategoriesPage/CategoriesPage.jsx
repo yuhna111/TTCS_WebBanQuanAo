@@ -3,12 +3,51 @@
 // MỤC ĐÍCH: Trang danh mục - hiển thị tất cả danh mục sản phẩm
 // ============================================================
 
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { CATEGORIES } from "../../data/mockData";
+import { getCategories } from "../../services/api";
 import "./CategoriesPage.css";
 
 export default function CategoriesPage() {
   const navigate = useNavigate();
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      setLoading(true);
+      try {
+        const data = await getCategories();
+        setCategories(data.data || []);
+        setError("");
+      } catch (err) {
+        setError(err.message || "Không thể tải danh mục");
+        setCategories([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCategories();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="categories-page">
+        <div className="container">Đang tải danh mục...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="categories-page">
+        <div className="container">
+          <p style={{ color: "red" }}>Lỗi: {error}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="categories-page">
@@ -24,7 +63,7 @@ export default function CategoriesPage() {
 
         {/* ---- CATEGORIES GRID ---- */}
         <div className="categories-grid">
-          {CATEGORIES.map((category) => (
+          {categories.map((category) => (
             <div
               key={category.category_id}
               className="category-card"
