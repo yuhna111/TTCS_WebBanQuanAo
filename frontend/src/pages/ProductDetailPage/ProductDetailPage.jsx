@@ -29,6 +29,8 @@ export default function ProductDetailPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [addedMsg, setAddedMsg] = useState(false);
+  const [selectedColor, setSelectedColor] = useState("");
+  const [selectedSize, setSelectedSize] = useState("");
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -43,6 +45,8 @@ export default function ProductDetailPage() {
 
         setProduct(productRes.data || null);
         setReviews(reviewsRes.data || []);
+        setSelectedColor(productRes.data?.color || "");
+        setSelectedSize(productRes.data?.size || "");
       } catch (err) {
         setError(err.message || "Không lấy được sản phẩm.");
       } finally {
@@ -163,14 +167,61 @@ export default function ProductDetailPage() {
             {/* Tên sản phẩm */}
             <h1 className="detail-page__name display">{product.product_name}</h1>
 
-            {/* Variant: màu + size */}
-            <p className="detail-page__variant">
-              {product.color} · Size {product.size}
+            {/* Danh mục */}
+            <p className="detail-page__category" style={{ color: "var(--color-gray-4)", marginBottom: "8px" }}>
+              {product.category_name || "Chưa phân loại"}
             </p>
 
             {/* Giá */}
             <div className="detail-page__price">
               {formatPrice(product.base_price)}
+            </div>
+
+            <div className="detail-page__divider" />
+
+            {/* Chọn Màu sắc */}
+            <div style={{ marginBottom: "24px" }}>
+              <label style={{ display: "block", marginBottom: "8px", fontWeight: 600 }}>
+                Màu sắc
+              </label>
+              <input
+                type="text"
+                value={selectedColor}
+                onChange={(e) => setSelectedColor(e.target.value)}
+                placeholder="VD: Đỏ, Xanh, Đen, ..."
+                style={{
+                  width: "100%",
+                  padding: "8px 12px",
+                  border: "1px solid var(--color-gray-3)",
+                  borderRadius: "4px",
+                  fontSize: "14px"
+                }}
+              />
+            </div>
+
+            {/* Chọn Size */}
+            <div style={{ marginBottom: "24px" }}>
+              <label style={{ display: "block", marginBottom: "8px", fontWeight: 600 }}>
+                Size
+              </label>
+              <select
+                value={selectedSize}
+                onChange={(e) => setSelectedSize(e.target.value)}
+                style={{
+                  width: "100%",
+                  padding: "8px 12px",
+                  border: "1px solid var(--color-gray-3)",
+                  borderRadius: "4px",
+                  fontSize: "14px"
+                }}
+              >
+                <option value="">-- Chọn size --</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+              </select>
             </div>
 
             <div className="detail-page__divider" />

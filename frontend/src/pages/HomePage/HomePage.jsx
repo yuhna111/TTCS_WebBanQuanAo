@@ -5,21 +5,35 @@
 
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { getProducts } from "../../services/api";
-import { formatPrice, CATEGORIES } from "../../data/mockData";
+import { getProducts, getCategories } from "../../services/api";
+import { formatPrice } from "../../data/mockData";
 import "./HomePage.css";
+
+// Helper: convert image URL
+function getImageUrl(imageUrl) {
+  if (!imageUrl) return "https://placehold.co/400x533/e8e5e0/6b6b6b?text=AvQ";
+  if (imageUrl.startsWith('http')) return imageUrl;
+  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+  const baseUrl = apiUrl.replace('/api', '');
+  return baseUrl + imageUrl;
+}
 
 export default function HomePage() {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchData = async () => {
       try {
-        const response = await getProducts();
+        const [productsRes, categoriesRes] = await Promise.all([
+          getProducts(),
+          getCategories()
+        ]);
         // Lấy 3 sản phẩm đầu tiên làm "featured"
-        setProducts((response.data || []).slice(0, 3));
+        setProducts((productsRes.data || []).slice(0, 3));
+        setCategories(categoriesRes.data || []);
       } catch (err) {
         console.error("Error fetching products:", err);
       } finally {
@@ -27,12 +41,12 @@ export default function HomePage() {
       }
     };
 
-    fetchProducts();
+    fetchData();
   }, []);
 
   // Helper: lookup category_name từ category_id
   const getCategoryName = (categoryId) => {
-    const category = CATEGORIES.find(c => c.category_id === categoryId);
+    const category = categories.find(c => c.category_id === categoryId);
     return category ? category.category_name : "Accessory";
   };
 
@@ -91,11 +105,11 @@ export default function HomePage() {
                   {/* Ảnh sản phẩm */}
                   <div className="product-card-featured__image-wrapper">
                     <img
-                      src={product.image_url || product.fallback_url}
+                      src={getImageUrl(product.image_url)}
                       alt={product.product_name}
                       className="product-card-featured__image"
                       onError={(e) => {
-                        e.target.src = product.fallback_url;
+                        e.target.src = "https://placehold.co/400x533/e8e5e0/6b6b6b?text=AvQ";
                       }}
                     />
                     {product.stock_quantity === 0 && (
