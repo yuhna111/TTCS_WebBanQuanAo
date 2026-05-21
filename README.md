@@ -74,43 +74,7 @@ Dự án đồ án thực tập: Một nền tảng e-commerce full-stack dành 
 
 ```text
 .
-├── backend/
-│   ├── config/
-│   │   └── db.js                # Cấu hình kết nối MySQL (Hardcode thông tin tại đây)
-│   ├── controllers/             # Logic xử lý và các truy vấn SQL thuần
-│   │   ├── authController.js
-│   │   ├── categoryController.js
-│   │   ├── orderController.js
-│   │   ├── productController.js
-│   │   ├── reviewController.js
-│   │   └── voucherController.js
-│   ├── middlewares/             # Các Middleware chặn và kiểm tra request
-│   │   ├── authMiddleware.js    # Xác thực JWT
-│   │   └── uploadMiddleware.js  # Cấu hình Multer lưu ảnh
-│   ├── routes/                  # Định nghĩa các endpoint API
-│   │   ├── authRoutes.js
-│   │   ├── categoryRoutes.js
-│   │   ├── orderRoutes.js
-│   │   ├── productRoutes.js
-│   │   ├── reviewRoutes.js
-│   │   └── voucherRoutes.js
-│   ├── server.js                # File chạy server gốc
-│   └── package.json
-├── frontend/
-│   ├── public/                  # Lưu trữ file tĩnh (vd: /images/products, hero-main.jpg)
-│   ├── src/
-│   │   ├── components/          # Navbar, Footer, ProtectedRoute
-│   │   ├── context/             # AuthContext, CartContext
-│   │   ├── data/                # mockData.js, adminMockData.js
-│   │   ├── pages/               # Trang giao diện (AuthPage, ProductsPage, CartPage, Admin...)
-│   │   ├── services/            # api.js (Chứa tất cả các hàm gọi API)
-│   │   └── styles/              # index.css (Biến CSS toàn cục)
-│   ├── index.html               
-│   ├── .env                     # Biến môi trường frontend
-│   ├── .env.example
-│   ├── vite.config.js
-│   └── package.json
-└── README.md
+TTCS_WebBanQuanAo/ │ ├── 📄 README.md │ ├── 📁 frontend/ │ ├── 📄 .env │ ├── 📄 .env.example │ ├── 📄 .gitignore │ ├── 📄 .gitkeep │ ├── 📄 index.html │ ├── 📄 package.json │ ├── 📄 package-lock.json │ ├── 📄 vite.config.js │ ├── 📄 README.md │ │ │ ├── 📁 public/ │ │ ├── 📄 favicon.svg │ │ └── 📁 images/ │ │ ├── 📁 hero/ │ │ │ ├── 📄 auth-bg.jpg │ │ │ ├── 📄 home-hero.jpg │ │ │ └── 📄 ĐẶTẢNHVÀOĐÂY.txt │ │ └── 📁 products/ │ │ └── 📄 ĐẶTẢNHVÀOĐÂY.txt │ │ │ └── 📁 src/ │ ├── 📄 main.jsx │ ├── 📄 App.jsx │ │ │ ├── 📁 components/ │ │ ├── 📁 Navbar/ │ │ │ ├── 📄 Navbar.jsx │ │ │ └── 📄 Navbar.css │ │ │ │ │ ├── 📁 Footer/ │ │ │ ├── 📄 Footer.jsx │ │ │ └── 📄 Footer.css │ │ │ │ │ └── 📁 ProtectedRoute/ │ │ └── 📄 ProtectedRoute.jsx │ │ │ ├── 📁 context/ │ │ ├── 📄 AuthContext.jsx │ │ └── 📄 CartContext.jsx │ │ │ ├── 📁 pages/ │ │ ├── 📁 HomePage/ │ │ │ ├── 📄 HomePage.jsx │ │ │ └── 📄 HomePage.css │ │ │ │ │ ├── 📁 AuthPage/ │ │ │ ├── 📄 LoginPage.jsx │ │ │ ├── 📄 RegisterPage.jsx │ │ │ └── 📄 AuthPage.css │ │ │ │ │ ├── 📁 ProductsPage/ │ │ │ ├── 📄 ProductsPage.jsx │ │ │ └── 📄 ProductsPage.css │ │ │ │ │ ├── 📁 ProductDetailPage/ │ │ │ ├── 📄 ProductDetailPage.jsx │ │ │ └── 📄 ProductDetailPage.css │ │ │ │ │ ├── 📁 CartPage/ │ │ │ ├── 📄 CartPage.jsx │ │ │ └── 📄 CartPage.css │ │ │ │ │ ├── 📁 CheckoutPage/ │ │ │ ├── 📄 CheckoutPage.jsx │ │ │ └── 📄 CheckoutPage.css │ │ │ │ │ ├── 📁 OrdersPage/ │ │ │ ├── 📄 OrdersPage.jsx │ │ │ └── 📄 OrdersPage.css │ │ │ │ │ ├── 📁 CategoriesPage/ │ │ │ ├── 📄 CategoriesPage.jsx │ │ │ └── 📄 CategoriesPage.css │ │ │ │ │ ├── 📁 Admin/ │ │ │ ├── 📄 AdminLayout.jsx │ │ │ ├── 📄 AdminDashboardPage.jsx │ │ │ ├── 📄 AdminProductsPage.jsx │ │ │ ├── 📄 AdminInventoryPage.jsx │ │ │ ├── 📄 AdminOrdersPage.jsx │ │ │ ├── 📄 AdminVouchersPage.jsx │ │ │ └── 📄 Admin.css │ │ │ │ │ └── 📁 SupportPages/ │ │ ├── 📄 ContactFAQPages.jsx │ │ ├── 📄 PolicyPages.jsx │ │ └── 📄 SupportPages.css │ │ │ ├── 📁 services/ │ │ └── 📄 api.js │ │ │ ├── 📁 data/ │ │ ├── 📄 mockData.js │ │ └── 📄 adminMockData.js │ │ │ └── 📁 styles/ │ └── 📄 index.css │ ├── 📁 backend/ │ ├── 📄 .gitignore │ ├── 📄 server.js │ ├── 📄 package.json │ ├── 📄 package-lock.json │ │ │ ├── 📁 config/ │ │ └── 📄 db.js │ │ │ ├── 📁 controllers/ │ │ ├── 📄 authController.js │ │ ├── 📄 productController.js │ │ ├── 📄 categoryController.js │ │ ├── 📄 orderController.js │ │ ├── 📄 reviewController.js │ │ ├── 📄 voucherController.js │ │ └── 📄 adminController.js │ │ │ ├── 📁 middlewares/ │ │ ├── 📄 authMiddleware.js │ │ └── 📄 uploadMiddleware.js │ │ │ └── 📁 routes/ │ ├── 📄 authRoutes.js │ ├── 📄 productRoutes.js │ ├── 📄 categoryRoutes.js │ ├── 📄 orderRoutes.js │ ├── 📄 reviewRoutes.js │ ├── 📄 voucherRoutes.js │ └── 📄 adminRoutes.js │ └── 📁 database/ ├── 📄 README.md ├── 📄 Screenshot 2026-05-14 135955.png ├── 📄 Screenshot 2026-05-14 140006.png ├── 📄 Screenshot 2026-05-14 140017.png ├── 📄 Screenshot 2026-05-14 140030.png ├── 📄 Screenshot 2026-05-14 140036.png ├── 📄 Screenshot 2026-05-14 140046.png ├── 📄 Screenshot 2026-05-14 140057.png ├── 📄 Screenshot 2026-05-14 140104.png └── 📄 Screenshot 2026-05-14 140109.png
 ```
 
 ## Hướng Dẫn Cài Đặt
