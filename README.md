@@ -72,9 +72,79 @@ Dự án đồ án thực tập: Một nền tảng e-commerce full-stack dành 
 
 ## Cấu Trúc Dự Án
 
-```text
-.
-TTCS_WebBanQuanAo/ │ ├── 📄 README.md │ ├── 📁 frontend/ │ ├── 📄 .env │ ├── 📄 .env.example │ ├── 📄 .gitignore │ ├── 📄 .gitkeep │ ├── 📄 index.html │ ├── 📄 package.json │ ├── 📄 package-lock.json │ ├── 📄 vite.config.js │ ├── 📄 README.md │ │ │ ├── 📁 public/ │ │ ├── 📄 favicon.svg │ │ └── 📁 images/ │ │ ├── 📁 hero/ │ │ │ ├── 📄 auth-bg.jpg │ │ │ ├── 📄 home-hero.jpg │ │ │ └── 📄 ĐẶTẢNHVÀOĐÂY.txt │ │ └── 📁 products/ │ │ └── 📄 ĐẶTẢNHVÀOĐÂY.txt │ │ │ └── 📁 src/ │ ├── 📄 main.jsx │ ├── 📄 App.jsx │ │ │ ├── 📁 components/ │ │ ├── 📁 Navbar/ │ │ │ ├── 📄 Navbar.jsx │ │ │ └── 📄 Navbar.css │ │ │ │ │ ├── 📁 Footer/ │ │ │ ├── 📄 Footer.jsx │ │ │ └── 📄 Footer.css │ │ │ │ │ └── 📁 ProtectedRoute/ │ │ └── 📄 ProtectedRoute.jsx │ │ │ ├── 📁 context/ │ │ ├── 📄 AuthContext.jsx │ │ └── 📄 CartContext.jsx │ │ │ ├── 📁 pages/ │ │ ├── 📁 HomePage/ │ │ │ ├── 📄 HomePage.jsx │ │ │ └── 📄 HomePage.css │ │ │ │ │ ├── 📁 AuthPage/ │ │ │ ├── 📄 LoginPage.jsx │ │ │ ├── 📄 RegisterPage.jsx │ │ │ └── 📄 AuthPage.css │ │ │ │ │ ├── 📁 ProductsPage/ │ │ │ ├── 📄 ProductsPage.jsx │ │ │ └── 📄 ProductsPage.css │ │ │ │ │ ├── 📁 ProductDetailPage/ │ │ │ ├── 📄 ProductDetailPage.jsx │ │ │ └── 📄 ProductDetailPage.css │ │ │ │ │ ├── 📁 CartPage/ │ │ │ ├── 📄 CartPage.jsx │ │ │ └── 📄 CartPage.css │ │ │ │ │ ├── 📁 CheckoutPage/ │ │ │ ├── 📄 CheckoutPage.jsx │ │ │ └── 📄 CheckoutPage.css │ │ │ │ │ ├── 📁 OrdersPage/ │ │ │ ├── 📄 OrdersPage.jsx │ │ │ └── 📄 OrdersPage.css │ │ │ │ │ ├── 📁 CategoriesPage/ │ │ │ ├── 📄 CategoriesPage.jsx │ │ │ └── 📄 CategoriesPage.css │ │ │ │ │ ├── 📁 Admin/ │ │ │ ├── 📄 AdminLayout.jsx │ │ │ ├── 📄 AdminDashboardPage.jsx │ │ │ ├── 📄 AdminProductsPage.jsx │ │ │ ├── 📄 AdminInventoryPage.jsx │ │ │ ├── 📄 AdminOrdersPage.jsx │ │ │ ├── 📄 AdminVouchersPage.jsx │ │ │ └── 📄 Admin.css │ │ │ │ │ └── 📁 SupportPages/ │ │ ├── 📄 ContactFAQPages.jsx │ │ ├── 📄 PolicyPages.jsx │ │ └── 📄 SupportPages.css │ │ │ ├── 📁 services/ │ │ └── 📄 api.js │ │ │ ├── 📁 data/ │ │ ├── 📄 mockData.js │ │ └── 📄 adminMockData.js │ │ │ └── 📁 styles/ │ └── 📄 index.css │ ├── 📁 backend/ │ ├── 📄 .gitignore │ ├── 📄 server.js │ ├── 📄 package.json │ ├── 📄 package-lock.json │ │ │ ├── 📁 config/ │ │ └── 📄 db.js │ │ │ ├── 📁 controllers/ │ │ ├── 📄 authController.js │ │ ├── 📄 productController.js │ │ ├── 📄 categoryController.js │ │ ├── 📄 orderController.js │ │ ├── 📄 reviewController.js │ │ ├── 📄 voucherController.js │ │ └── 📄 adminController.js │ │ │ ├── 📁 middlewares/ │ │ ├── 📄 authMiddleware.js │ │ └── 📄 uploadMiddleware.js │ │ │ └── 📁 routes/ │ ├── 📄 authRoutes.js │ ├── 📄 productRoutes.js │ ├── 📄 categoryRoutes.js │ ├── 📄 orderRoutes.js │ ├── 📄 reviewRoutes.js │ ├── 📄 voucherRoutes.js │ └── 📄 adminRoutes.js │ └── 📁 database/ ├── 📄 README.md ├── 📄 Screenshot 2026-05-14 135955.png ├── 📄 Screenshot 2026-05-14 140006.png ├── 📄 Screenshot 2026-05-14 140017.png ├── 📄 Screenshot 2026-05-14 140030.png ├── 📄 Screenshot 2026-05-14 140036.png ├── 📄 Screenshot 2026-05-14 140046.png ├── 📄 Screenshot 2026-05-14 140057.png ├── 📄 Screenshot 2026-05-14 140104.png └── 📄 Screenshot 2026-05-14 140109.png
+```
+TTCS_WebBanQuanAo/
+├── README.md
+├── backend/
+│   ├── .gitignore
+│   ├── server.js              # Entry point của server
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── config/                # Cấu hình database
+│   │   └── db.js
+│   ├── controllers/           # Xử lý logic business
+│   │   ├── authController.js
+│   │   ├── productController.js
+│   │   ├── orderController.js
+│   │   ├── reviewController.js
+│   │   ├── categoryController.js
+│   │   └── voucherController.js
+│   ├── routes/                # Định nghĩa các API endpoint
+│   │   ├── authRoutes.js
+│   │   ├── productRoutes.js
+│   │   ├── orderRoutes.js
+│   │   ├── reviewRoutes.js
+│   │   ├── categoryRoutes.js
+│   │   └── voucherRoutes.js
+│   └── middlewares/           # Middleware xác thực, upload, v.v.
+│       ├── authMiddleware.js
+│       └── uploadMiddleware.js
+│
+├── frontend/
+│   ├── .env                   # Biến môi trường
+│   ├── .env.example
+│   ├── .gitignore
+│   ├── .gitkeep
+│   ├── README.md
+│   ├── index.html
+│   ├── vite.config.js
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── public/                # Static files
+│   │   ├── images/
+│   │   │   ├── products/      # Ảnh sản phẩm
+│   │   │   └── hero/          # Banner
+│   │   └── ...
+│   └── src/
+│       ├── App.jsx            # Component chính
+│       ├── main.jsx           # Entry point
+│       ├── components/        # Các component tái sử dụng
+│       │   ├── Navbar.jsx
+│       │   ├── Footer.jsx
+│       │   └── ProtectedRoute.jsx
+│       ├── context/           # Context API
+│       │   ├── AuthContext.jsx
+│       │   └── CartContext.jsx
+│       ├── pages/             # Các trang chính
+│       │   ├── AuthPage/
+│       │   ├── ProductsPage/
+│       │   ├── ProductDetailPage/
+│       │   ├── CartPage/
+│       │   ├── CheckoutPage/
+│       │   ├── OrdersPage/
+│       │   ├── Admin/
+│       │   └── SupportPages/
+│       ├── services/          # API calls
+│       │   └── api.js
+│       ├── data/              # Mock data
+│       │   ├── mockData.js
+│       │   └── adminMockData.js
+│       └── styles/            # Global CSS
+│           └── index.css
+│
+└── database/
+    ├── README.md              # Hướng dẫn setup database
+    └── Screenshots/           # Ảnh chi tiết schema
 ```
 
 ## Hướng Dẫn Cài Đặt
@@ -127,7 +197,7 @@ VITE_API_URL=http://localhost:3000/api
 Hãy chắc chắn rằng máy bạn đã cài đặt và đang chạy dịch vụ MySQL.
 
 1. **Bước 1: Thiết lập Database**
-   Tạo một cơ sở dữ liệu trên MySQL local của bạn. Chạy file script SQL của dự án để tạo các bảng cần thiết (`users`, `products`, `categories`, `orders`, `reviews`, `vouchers`).
+   Tạo một cơ sở dữ liệu trên MySQL local của bạn. Chạy file script SQL của dự án để tạo các bảng cần thiết (`users`, `products`, `categories`, `orders`, `reviews`, `vouchers`, v.v.)
 
 2. **Bước 2: Cập nhật thông tin kết nối**
    Dự án này cấu hình database trực tiếp trong code. Mở file `backend/config/db.js` và điền thông tin:
@@ -187,7 +257,7 @@ Nếu bạn đã nạp dữ liệu mẫu (mock data) vào database, có thể s�
 
 ## Lưu Ý Quá Trình Phát Triển
 
-* **Hình ảnh sản phẩm:** Nên đặt hình ảnh trực tiếp vào thư mục `frontend/public/images/products/` theo tên file khai báo trong `mockData.js`. Kích thước ảnh khuyến nghị là **600x800px** (tỉ lệ 3:4) và Hero banner là **1400x900px**.
-* **Cấu hình Upload:** Đối với tính năng upload ảnh từ Admin, đảm bảo thư mục lưu trữ tĩnh bên backend đã được cấu hình chính xác qua file `uploadMiddleware.js`.
-* **CORS:** Đảm bảo file cấu hình server Express bên backend cho phép nhận các request từ đường dẫn gốc của Vite (`http://localhost:5173`).
-* **Gitignore:** Các thư mục sinh tự động như `node_modules`, `dist` và các file cấu hình môi trường local (`.env.local`) đã được thiết lập sẵn trong `.gitignore` để tránh bị đẩy lên repository.
+* **Hình ảnh sản phẩm:** Nên đặt hình ảnh trực tiếp vào thư mục `frontend/public/images/products/` theo tên file khai báo trong `mockData.js`. Kích thước ảnh khuyến nghị: 600×800px (tỉ lệ 3:4)
+* **Cấu hình Upload:** Đối với tính năng upload ảnh từ Admin, đảm bảo thư mục lưu trữ tĩnh bên backend đã được cấu hình chính xác qua file `uploadMiddleware.js`
+* **CORS:** Đảm bảo file cấu hình server Express bên backend cho phép nhận các request từ đường dẫn gốc của Vite (`http://localhost:5173`)
+* **Gitignore:** Các thư mục sinh tự động như `node_modules`, `dist` và các file cấu hình môi trường local (`.env.local`) đã được thiết lập sẵn trong `.gitignore`
